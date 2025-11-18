@@ -1,8 +1,17 @@
 {
-  "booking": "Réservation",
+  "booking": "Réservation/Connexion",
   "registration": "Inscription",
   "faq": "FAQ",
   "videos": "Vidéos",
   "contact_us": "Contactez-nous",
-  "introduction": "Introduction"
+  "introduction": "Introduction",
+  "question1":"Quel âge faut-il avoir pour obtenir le permis de conduire B ?",
+  "answer1":"Vous pouvez passer l'examen pratique dès que vous atteignez l'âge de 18 ans.",
+  "question2":"Peut-on prendre des leçons de conduite sans théorie ?",
+  "answer2":"Il n'est pas nécessaire de passer l'examen théorique avant de commencer les leçons de conduite à l'auto-école de Liman.",
+  "question3":"Peut-on conduire avec un permis provisoire ?",
+  "answer3":"La conduite sur route commence après une période d'entraînement pouvant aller jusqu'à 36 mois, au cours de laquelle vous avez le choix entre conduire avec un guide et une période de 18 mois sans guide.",
+  "question4":"Et si vous preniez 20 heures de cours de conduite ?",
+  "answer4":"Après avoir obtenu un \"certificat d'aptitude\", vous vous rendrez à la mairie. Vous y obtiendrez votre permis de conduire provisoire M18 par l'intermédiaire de l'école de conduite de Liman, après quoi vous pourrez commencer à conduire de manière autonome."
+
 }

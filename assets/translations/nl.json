@@ -1,8 +1,17 @@
 {
-  "booking": "Boeking",
+  "booking": "Boeking/Inloggen",
   "registration": "Registratie",
   "faq": "FAQ",
   "videos": "Video's",
   "contact_us": "Contact",
-  "introduction": "Introductie"
+  "introduction": "Introductie",
+  "question1":"Hoe oud moet je zijn voor rijbewijs B?",
+  "answer1":"Je kunt het praktijkexamen doen zodra je 18 jaar bent.",
+  "question2":"Kan je rijles volgen zonder theorie?",
+  "answer2":"Het is niet vereist om te slagen voor het theorie-examen voordat je kunt beginnen met rijlessen bij rijschool Liman.",
+  "question3":"Mag je rijden met een voorlopig rijbewijs?",
+  "answer3":"Rijden op de weg begint na een oefenperiode van maximaal 36 maanden, waarbij je de keuze hebt om met een begeleider te rijden, of een periode van 18 maanden zonder begeleider.",
+  "question4":"Wat als je 20 uur rijles hebt gevolgd?",
+  "answer4":"Na het behalen van een ‘bekwaamheidsattest’, ga je naar het gemeentehuis. Daar kun je jouw voorlopig rijbewijs M18 verkrijgen via Rijschool Liman, waarna je zelfstandig kunt gaan rijden."
+
 }

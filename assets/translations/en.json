@@ -1,8 +1,16 @@
 {
-  "booking": "Booking",
+  "booking": "Booking/Logging In",
   "registration": "Registration",
   "faq": "FAQ",
   "videos": "Videos",
   "contact_us": "Contact Us",
-  "introduction": "Introduction"
+  "introduction": "Introduction",
+  "question1":"How old do you need to be for driver's license B?",
+  "answer1":"You can take the practical exam as soon as you turn 18.",
+  "question2":"Can you take driving lessons without theory?",
+  "answer2":"It is not required to pass the theory exam before you can begin driving lessons at Liman Driving School.",
+  "question3":"Can you drive with a provisional license?",
+  "answer3":"Driving on the road begins after a practice period of up to 36 months, during which you have the choice of driving with a guide, or a period of 18 months without a guide.",
+  "question4":"What if you took 20 hours of driving lessons?",
+  "answer4":"After obtaining a \"certificate of competency,\" you go to the town hall. There you can obtain your provisional M18 driving license through Liman Driving School, after which you can start driving independently."
 }

@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:limanplatform/components/appconfig.dart';
 import 'package:limanplatform/components/dailogue.dart';
 import 'package:limanplatform/components/faq.dart';
 import 'package:limanplatform/components/webview_page.dart';
@@ -14,13 +15,13 @@ void main() async {
       supportedLocales: const [Locale('en'), Locale('nl'), Locale('fr')],
       path: 'assets/translations',
       fallbackLocale: const Locale('nl'),
-      child: const MyApp(),
+      child: const LimanPlatform(),
     ),
   );
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class LimanPlatform extends StatelessWidget {
+  const LimanPlatform({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -49,16 +50,35 @@ class MyApp extends StatelessWidget {
                       icon: const Icon(
                         Icons.language,
                         size: 28,
-                        color: Colors.blue,
+                        color: Color(0xFF0173D3),
                       ),
                       onSelected: (value) async {
                         // 🔥 CHANGE LANGUAGE
                         await context.setLocale(Locale(value));
+                        AppConfig.languageCode = value; // set globally
                       },
                       itemBuilder: (context) => const [
-                        PopupMenuItem(value: 'en', child: Text("English")),
-                        PopupMenuItem(value: 'nl', child: Text("Dutch")),
-                        PopupMenuItem(value: 'fr', child: Text("French")),
+                        PopupMenuItem(
+                          value: 'en',
+                          child: Text(
+                            "English",
+                            style: TextStyle(color: Color(0xFF0173D3)),
+                          ),
+                        ),
+                        PopupMenuItem(
+                          value: 'nl',
+                          child: Text(
+                            "Dutch",
+                            style: TextStyle(color: Color(0xFF0173D3)),
+                          ),
+                        ),
+                        PopupMenuItem(
+                          value: 'fr',
+                          child: Text(
+                            "French",
+                            style: TextStyle(color: Color(0xFF0173D3)),
+                          ),
+                        ),
                       ],
                     ),
                   ],
@@ -89,7 +109,7 @@ class MyApp extends StatelessWidget {
                               context,
                               MaterialPageRoute(
                                 builder: (context) => WebViewPage(
-                                  url: "https://y-liman.com/en/inloggen/",
+                                  url: "${AppConfig.baseUrl}/inloggen/",
                                   name: key,
                                 ),
                               ),
@@ -99,7 +119,7 @@ class MyApp extends StatelessWidget {
                               context,
                               MaterialPageRoute(
                                 builder: (context) => WebViewPage(
-                                  url: "https://y-liman.com/en/registreren/",
+                                  url: "${AppConfig.baseUrl}/registreren/",
                                   name: key,
                                 ),
                               ),
@@ -113,12 +133,12 @@ class MyApp extends StatelessWidget {
                             );
                           } else if (key == "videos") {
                             DialogHelper.showSuccess(context);
-                          } else if (key == "contact us") {
+                          } else if (key == "contact_us") {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
                                 builder: (context) => WebViewPage(
-                                  url: "https://y-liman.com/en/contact/",
+                                  url: "${AppConfig.baseUrl}/contact/",
                                   name: key,
                                 ),
                               ),
@@ -128,7 +148,7 @@ class MyApp extends StatelessWidget {
                               context,
                               MaterialPageRoute(
                                 builder: (context) => WebViewPage(
-                                  url: "https://y-liman.com/en/rijbewijsb/",
+                                  url: "${AppConfig.baseUrl}/rijbewijsb/",
                                   name: key,
                                 ),
                               ),

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
@@ -35,7 +36,7 @@ class _WebViewPageState extends State<WebViewPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(widget.name.toUpperCase())),
+      appBar: AppBar(title: Text(widget.name.tr().toUpperCase())),
       body: Stack(
         children: [
           WebViewWidget(controller: _controller), // WebView

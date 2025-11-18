@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:limanplatform/constants.dart';
 
@@ -15,12 +16,12 @@ class _FAQPageState extends State<FAQPage> {
       appBar: AppBar(
         title: const Text("FAQ"),
         backgroundColor: Colors.white,
-        foregroundColor: Colors.blue,
+        foregroundColor: Color(0xFF0173D3),
       ),
       body: Container(
         decoration: const BoxDecoration(
           gradient: LinearGradient(
-            colors: [Colors.white, Colors.blue],
+            colors: [Colors.white, Color(0xFF0173D3)],
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
           ),
@@ -38,14 +39,14 @@ class _FAQPageState extends State<FAQPage> {
                   return ListTile(
                     leading: const Icon(
                       Icons.question_answer,
-                      color: Colors.blue,
+                      color: Color(0xFF0173D3),
                     ),
                     title: Text(
-                      item['question']!,
+                      item['question'].toString().tr()!,
                       style: const TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 16,
-                        color: Colors.blue,
+                        color: Color(0xFF0173D3),
                       ),
                     ),
                   );
@@ -54,12 +55,15 @@ class _FAQPageState extends State<FAQPage> {
                   width: double.infinity,
                   padding: const EdgeInsets.all(12),
                   decoration: BoxDecoration(
-                    color: Colors.blue.withOpacity(0.05),
+                    color: Color(0xFF0173D3).withOpacity(0.05),
                     borderRadius: BorderRadius.circular(12),
                   ),
                   child: Text(
-                    item['answer']!,
-                    style: const TextStyle(fontSize: 14, color: Colors.blue),
+                    item['answer'].toString().tr()!,
+                    style: const TextStyle(
+                      fontSize: 14,
+                      color: Color(0xFF0173D3),
+                    ),
                   ),
                 ),
               );
