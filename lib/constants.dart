@@ -1,37 +1,13 @@
 import 'package:flutter/material.dart';
 
 class Constants {
-  static const List<Map<String, dynamic>> items = [
-    {
-      "icon": Icons.description, // Booking icon
-      "title": "Introduction",
-      "color": Colors.blue,
-    },
-    {
-      "icon": Icons.app_registration, // Booking icon
-      "title": "Registration",
-      "color": Colors.blue,
-    },
-    {
-      "icon": Icons.book_online, // Booking icon
-      "title": "Booking",
-      "color": Colors.blue,
-    },
-    {
-      "icon": Icons.question_answer, // FAQ icon
-      "title": "FAQ",
-      "color": Colors.blue,
-    },
-    {
-      "icon": Icons.play_circle_fill, // Videos icon
-      "title": "Videos",
-      "color": Colors.blue,
-    },
-    {
-      "icon": Icons.contact_emergency, // Videos icon
-      "title": "Contact Us",
-      "color": Colors.blue,
-    },
+  static final List<Map<String, dynamic>> items = [
+    {'title': 'booking', 'icon': Icons.book_online, 'color': Colors.blue},
+    {'title': 'registration', 'icon': Icons.person_add, 'color': Colors.blue},
+    {'title': 'faq', 'icon': Icons.help, 'color': Colors.blue},
+    {'title': 'videos', 'icon': Icons.video_library, 'color': Colors.blue},
+    {'title': 'contact_us', 'icon': Icons.call, 'color': Colors.blue},
+    {'title': 'introduction', 'icon': Icons.info, 'color': Colors.blue},
   ];
 
   static const List<Map<String, String>> faqs = [
