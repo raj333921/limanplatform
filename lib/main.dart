@@ -50,33 +50,34 @@ class LimanPlatform extends StatelessWidget {
                       icon: const Icon(
                         Icons.language,
                         size: 28,
-                        color: Color(0xFF0173D3),
+                        color: Constants.primary,
                       ),
                       onSelected: (value) async {
                         // 🔥 CHANGE LANGUAGE
                         await context.setLocale(Locale(value));
                         AppConfig.languageCode = value; // set globally
+                        print(AppConfig.languageCode);
                       },
                       itemBuilder: (context) => const [
                         PopupMenuItem(
-                          value: 'en',
+                          value: 'fr',
                           child: Text(
-                            "English",
-                            style: TextStyle(color: Color(0xFF0173D3)),
+                            "French",
+                            style: TextStyle(color: Constants.primary),
                           ),
                         ),
                         PopupMenuItem(
                           value: 'nl',
                           child: Text(
                             "Dutch",
-                            style: TextStyle(color: Color(0xFF0173D3)),
+                            style: TextStyle(color: Constants.primary),
                           ),
                         ),
                         PopupMenuItem(
-                          value: 'fr',
+                          value: 'en',
                           child: Text(
-                            "French",
-                            style: TextStyle(color: Color(0xFF0173D3)),
+                            "English",
+                            style: TextStyle(color: Constants.primary),
                           ),
                         ),
                       ],
@@ -93,7 +94,7 @@ class LimanPlatform extends StatelessWidget {
                     itemCount: Constants.items.length,
                     gridDelegate:
                         const SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 2,
+                          crossAxisCount: 3,
                           crossAxisSpacing: 16,
                           mainAxisSpacing: 16,
                           childAspectRatio: 0.9,
@@ -105,6 +106,7 @@ class LimanPlatform extends StatelessWidget {
                               .toLowerCase();
 
                           if (key == "booking") {
+                            print("${AppConfig.baseUrl}/inloggen/");
                             Navigator.push(
                               context,
                               MaterialPageRoute(
@@ -173,7 +175,7 @@ class LimanPlatform extends StatelessWidget {
                                 child: Icon(
                                   Constants.items[index]['icon'],
                                   size: 32,
-                                  color: Colors.white,
+                                  color: Constants.background,
                                 ),
                               ),
                               const SizedBox(height: 4),
@@ -189,6 +191,19 @@ class LimanPlatform extends StatelessWidget {
                         ),
                       );
                     },
+                  ),
+                ),
+              ),
+              Container(
+                width: double.infinity,
+                padding: const EdgeInsets.all(5),
+                color: Constants.primary,
+                child: Text(
+                  "© 2025 Liman Platform. All rights reserved.",
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(
+                    color: Constants.background,
+                    fontSize: 14,
                   ),
                 ),
               ),

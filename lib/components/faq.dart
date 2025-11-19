@@ -15,13 +15,13 @@ class _FAQPageState extends State<FAQPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("FAQ"),
-        backgroundColor: Colors.white,
-        foregroundColor: Color(0xFF0173D3),
+        backgroundColor: Constants.background,
+        foregroundColor: Constants.primary,
       ),
       body: Container(
         decoration: const BoxDecoration(
           gradient: LinearGradient(
-            colors: [Colors.white, Color(0xFF0173D3)],
+            colors: [Constants.background, Constants.primary],
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
           ),
@@ -39,14 +39,14 @@ class _FAQPageState extends State<FAQPage> {
                   return ListTile(
                     leading: const Icon(
                       Icons.question_answer,
-                      color: Color(0xFF0173D3),
+                      color: Constants.primary,
                     ),
                     title: Text(
                       item['question'].toString().tr()!,
                       style: const TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 16,
-                        color: Color(0xFF0173D3),
+                        color: Constants.primary,
                       ),
                     ),
                   );
@@ -55,14 +55,14 @@ class _FAQPageState extends State<FAQPage> {
                   width: double.infinity,
                   padding: const EdgeInsets.all(12),
                   decoration: BoxDecoration(
-                    color: Color(0xFF0173D3).withOpacity(0.05),
+                    color: Constants.primary.withOpacity(0.05),
                     borderRadius: BorderRadius.circular(12),
                   ),
                   child: Text(
                     item['answer'].toString().tr()!,
                     style: const TextStyle(
                       fontSize: 14,
-                      color: Color(0xFF0173D3),
+                      color: Constants.primary,
                     ),
                   ),
                 ),
