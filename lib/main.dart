@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:limanplatform/components/appconfig.dart';
 import 'package:limanplatform/components/corousel.dart';
 import 'package:limanplatform/components/faq.dart';
+import 'package:limanplatform/components/socialicons.dart';
 import 'package:limanplatform/components/videopage.dart';
 import 'package:limanplatform/components/webview_page.dart';
 import 'package:limanplatform/constants.dart';
@@ -206,6 +207,7 @@ class LimanPlatform extends StatelessWidget {
                   ),
                 ),
               ),
+              const SocialIcons(),
               Container(
                 width: double.infinity,
                 padding: const EdgeInsets.all(5),
