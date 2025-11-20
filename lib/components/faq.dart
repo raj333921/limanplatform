@@ -15,8 +15,8 @@ class _FAQPageState extends State<FAQPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("FAQ"),
-        backgroundColor: Constants.background,
-        foregroundColor: Constants.primary,
+        backgroundColor: Constants.primary,
+        foregroundColor: Constants.background,
       ),
       body: Container(
         decoration: const BoxDecoration(

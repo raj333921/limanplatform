@@ -30,6 +30,8 @@ environment:
 dependencies:
   webview_flutter: ^4.7.0
   easy_localization: ^3.0.3
+  carousel_slider: ^5.0.0
+  video_player: ^2.6.1
   http: ^1.1.0
   flutter:
     sdk: flutter
@@ -64,6 +66,10 @@ flutter:
   assets:
     - assets/logo.png
     - assets/translations/
+    - assets/images/
+    - assets/videos/video1.mp4
+    - assets/videos/video2.mp4
+    - assets/thumbnails/
 
   # To add assets to your application, add an assets section, like this:
   # assets:

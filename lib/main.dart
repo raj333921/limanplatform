@@ -1,8 +1,10 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:limanplatform/components/appconfig.dart';
+import 'package:limanplatform/components/corousel.dart';
 import 'package:limanplatform/components/dailogue.dart';
 import 'package:limanplatform/components/faq.dart';
+import 'package:limanplatform/components/videopage.dart';
 import 'package:limanplatform/components/webview_page.dart';
 import 'package:limanplatform/constants.dart';
 
@@ -40,6 +42,7 @@ class LimanPlatform extends StatelessWidget {
               // --- HEADER ---
               Padding(
                 padding: const EdgeInsets.all(16.0),
+
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -85,7 +88,10 @@ class LimanPlatform extends StatelessWidget {
                   ],
                 ),
               ),
-
+              Padding(
+                padding: const EdgeInsets.all(16),
+                child: buildImageCarousel(Constants.images),
+              ),
               // --- GRID ---
               Expanded(
                 child: Padding(
@@ -134,7 +140,13 @@ class LimanPlatform extends StatelessWidget {
                               ),
                             );
                           } else if (key == "videos") {
-                            DialogHelper.showSuccess(context);
+                            //DialogHelper.showSuccess(context);
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => VideoPage(),
+                              ),
+                            );
                           } else if (key == "contact_us") {
                             Navigator.push(
                               context,
