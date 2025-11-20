@@ -4,7 +4,7 @@
   "faq": "FAQ",
   "videos": "Vidéos",
   "contact_us": "Contactez-nous",
-  "introduction": "Introduction",
+  "introduction": "Permis B",
   "login":"Adresse électronique",
   "password": "Mot de passe",
   "loginPage": "Veuillez saisir vos données de connexion pour accéder à l'horaire.",
@@ -17,9 +17,9 @@
   "question3":"Peut-on conduire avec un permis provisoire ?",
   "answer3":"La conduite sur route commence après une période d'entraînement pouvant aller jusqu'à 36 mois, au cours de laquelle vous avez le choix entre conduire avec un guide et une période de 18 mois sans guide.",
   "question4":"Et si vous preniez 20 heures de cours de conduite ?",
-  "answer4":"Après avoir obtenu un \"certificat d'aptitude\", vous vous rendrez à la mairie. Vous y obtiendrez votre permis de conduire provisoire M18 par l'intermédiaire de l'école de conduite de Liman, après quoi vous pourrez commencer à conduire de manière autonome."
-  ,"video1":"Traffic Signals - fr",
-  "video2":"Parking right side - fr",
-  "novideo":"No videos found. - fr",
-  "searchvideo": "search for videos.... - fr"
+  "answer4":"Après avoir obtenu un \"certificat d'aptitude\", vous vous rendrez à la mairie. Vous y obtiendrez votre permis de conduire provisoire M18 par l'intermédiaire de l'école de conduite de Liman, après quoi vous pourrez commencer à conduire de manière autonome.",
+  "video1": "Signaux de circulation",
+  "video2": "Stationnement du côté droit",
+  "novideo": "Aucune vidéo trouvée.",
+  "searchvideo": "rechercher des vidéos..."
 }

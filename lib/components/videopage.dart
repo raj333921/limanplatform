@@ -33,7 +33,9 @@ class _VideoPageState extends State<VideoPage> {
     String query = _searchController.text.toLowerCase();
     setState(() {
       _filteredVideos = _videos.where((video) {
-        return video.title.toLowerCase().contains(query);
+        final titleTranslated = video.title.tr().toLowerCase();
+        final q = query.toLowerCase();
+        return titleTranslated.contains(q);
       }).toList();
     });
   }

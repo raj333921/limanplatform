@@ -2,7 +2,6 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:limanplatform/components/appconfig.dart';
 import 'package:limanplatform/components/corousel.dart';
-import 'package:limanplatform/components/dailogue.dart';
 import 'package:limanplatform/components/faq.dart';
 import 'package:limanplatform/components/videopage.dart';
 import 'package:limanplatform/components/webview_page.dart';
@@ -14,9 +13,10 @@ void main() async {
 
   runApp(
     EasyLocalization(
-      supportedLocales: const [Locale('en'), Locale('nl'), Locale('fr')],
+      supportedLocales: const [Locale('fr'), Locale('nl'), Locale('en')],
       path: 'assets/translations',
-      fallbackLocale: const Locale('nl'),
+      fallbackLocale: const Locale('fr'),
+      startLocale: Locale('fr'),
       child: const LimanPlatform(),
     ),
   );
