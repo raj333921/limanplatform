@@ -17,6 +17,14 @@ class _FAQPageState extends State<FAQPage> {
         title: const Text("FAQ"),
         backgroundColor: Constants.primary,
         foregroundColor: Constants.background,
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.search),
+            onPressed: () {
+              showSearch(context: context, delegate: FAQSearchDelegate());
+            },
+          ),
+        ],
       ),
       body: Container(
         decoration: const BoxDecoration(
@@ -34,7 +42,7 @@ class _FAQPageState extends State<FAQPage> {
               final item = entry.value;
 
               return ExpansionPanelRadio(
-                value: index, // unique value for single expand
+                value: index,
                 headerBuilder: (context, isExpanded) {
                   return ListTile(
                     leading: const Icon(
@@ -42,7 +50,7 @@ class _FAQPageState extends State<FAQPage> {
                       color: Constants.primary,
                     ),
                     title: Text(
-                      item['question'].toString().tr()!,
+                      item['question'].toString().tr(),
                       style: const TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 16,
@@ -59,7 +67,7 @@ class _FAQPageState extends State<FAQPage> {
                     borderRadius: BorderRadius.circular(12),
                   ),
                   child: Text(
-                    item['answer'].toString().tr()!,
+                    item['answer'].toString().tr(),
                     style: const TextStyle(
                       fontSize: 14,
                       color: Constants.primary,
@@ -71,6 +79,106 @@ class _FAQPageState extends State<FAQPage> {
           ),
         ),
       ),
+    );
+  }
+}
+
+//
+// SEARCH DELEGATE WITH WILDCARD MATCHING
+//
+class FAQSearchDelegate extends SearchDelegate {
+  @override
+  String? get searchFieldLabel => "search".tr();
+  // Normalize text
+  String normalize(String text) {
+    return text.toLowerCase().trim();
+  }
+
+  // Wildcard/fuzzy-style matching: all words must exist somewhere in text
+  bool wildcardMatch(String text, String query) {
+    final t = normalize(text);
+    final q = normalize(query);
+
+    final words = q.split(" ").where((w) => w.isNotEmpty);
+
+    // each word typed must appear somewhere in the text
+    return words.every((w) => t.contains(w));
+  }
+
+  @override
+  List<Widget>? buildActions(BuildContext context) {
+    return [
+      if (query.isNotEmpty)
+        IconButton(
+          icon: const Icon(Icons.clear),
+          onPressed: () {
+            query = '';
+            showSuggestions(context);
+          },
+        ),
+    ];
+  }
+
+  @override
+  Widget? buildLeading(BuildContext context) {
+    return IconButton(
+      icon: const Icon(Icons.arrow_back),
+      onPressed: () => close(context, null),
+    );
+  }
+
+  @override
+  Widget buildResults(BuildContext context) {
+    final results = Constants.faqs.where((item) {
+      final question = item['question'].toString().tr();
+      final answer = item['answer'].toString().tr();
+      return wildcardMatch(question, query) || wildcardMatch(answer, query);
+    }).toList();
+
+    if (results.isEmpty) {
+      return const Center(child: Text("No results found"));
+    }
+
+    return ListView.builder(
+      itemCount: results.length,
+      itemBuilder: (context, index) {
+        final item = results[index];
+        return ExpansionTile(
+          title: Text(item['question'].toString().tr()),
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(12),
+              child: Text(item['answer'].toString().tr()),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  @override
+  Widget buildSuggestions(BuildContext context) {
+    final suggestions = Constants.faqs.where((item) {
+      final question = item['question'].toString().tr();
+      return wildcardMatch(question, query);
+    }).toList();
+
+    if (suggestions.isEmpty && query.isNotEmpty) {
+      return Center(child: Text("suggestions".tr()));
+    }
+
+    return ListView.builder(
+      itemCount: suggestions.length,
+      itemBuilder: (context, index) {
+        final item = suggestions[index];
+        return ListTile(
+          title: Text(item['question'].toString().tr()),
+          onTap: () {
+            query = item['question'].toString();
+            showResults(context);
+          },
+        );
+      },
     );
   }
 }

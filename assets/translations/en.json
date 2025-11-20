@@ -21,5 +21,7 @@
   "video1":"Traffic Signals",
   "video2":"Parking right side",
   "novideo":"No videos found.",
-  "searchvideo": "search for videos...."
+  "searchvideo": "search for videos....",
+  "suggestions": "No suggestions",
+  "search": "Search"
 }
