@@ -34,7 +34,7 @@ dependencies:
   easy_localization: ^3.0.3
   carousel_slider: ^5.0.0
   video_player: ^2.6.1
-  http: ^1.1.0
+  http: ^1.6.0
   flutter:
     sdk: flutter
   flutter_localizations:
@@ -45,6 +45,7 @@ dependencies:
   cupertino_icons: ^1.0.8
   shared_preferences: ^2.0.18
   flutter_native_splash: ^2.4.7
+  provider: ^6.1.5+1
 
 flutter_icons:
   android: true

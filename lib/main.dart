@@ -7,6 +7,9 @@ import 'package:limanplatform/components/socialicons.dart';
 import 'package:limanplatform/components/videopage.dart';
 import 'package:limanplatform/components/webview_page.dart';
 import 'package:limanplatform/constants.dart';
+import 'package:limanplatform/quiz/quizprovider.dart';
+import 'package:limanplatform/quiz/quizscreen.dart';
+import 'package:provider/provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -18,7 +21,12 @@ void main() async {
       path: 'assets/translations',
       fallbackLocale: const Locale('fr'),
       startLocale: Locale('fr'),
-      child: const LimanPlatform(),
+
+      // ⬇️ Wrap LimanPlatform with MultiProvider HERE
+      child: MultiProvider(
+        providers: [ChangeNotifierProvider(create: (_) => QuizProvider())],
+        child: const LimanPlatform(),
+      ),
     ),
   );
 }
@@ -168,6 +176,13 @@ class LimanPlatform extends StatelessWidget {
                                 ),
                               ),
                             );
+                          } else if (key == "quiz") {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const QuizScreen(),
+                              ),
+                            );
                           }
                         },
                         borderRadius: BorderRadius.circular(12),
@@ -217,7 +232,7 @@ class LimanPlatform extends StatelessWidget {
                   textAlign: TextAlign.center,
                   style: const TextStyle(
                     color: Constants.background,
-                    fontSize: 14,
+                    fontSize: 5,
                   ),
                 ),
               ),

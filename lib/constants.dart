@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:limanplatform/dao/videoitem.dart';
 
 class Constants {
+  static const questiontimer = 36;
   static const primary = Color(0xFF0173D3);
   static const secondary = Colors.white;
   static const background = Colors.white;
   static const externallogin = "https://planrijles.nl/scripts/login";
   static final List<Map<String, dynamic>> items = [
+    {'title': 'quiz', 'icon': Icons.quiz, 'color': primary},
     {'title': 'introduction', 'icon': Icons.info, 'color': primary},
     {'title': 'registration', 'icon': Icons.person_add, 'color': primary},
     {'title': 'booking', 'icon': Icons.book_online, 'color': primary},
