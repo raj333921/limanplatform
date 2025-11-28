@@ -8,7 +8,7 @@
 PRODUCT_NAME = limanplatform
 
 // The application's bundle identifier
-PRODUCT_BUNDLE_IDENTIFIER = com.example.limanplatform
+PRODUCT_BUNDLE_IDENTIFIER = com.limanplatform.be
 
 // The copyright displayed in application information
-PRODUCT_COPYRIGHT = Copyright © 2025 com.example. All rights reserved.
+PRODUCT_COPYRIGHT = Copyright © 2025 com.limanplatform.be. All rights reserved.

@@ -1,4 +1,4 @@
-package com.example.limanplatform
+package com.limanplatform.be
 
 import io.flutter.embedding.android.FlutterActivity
 
