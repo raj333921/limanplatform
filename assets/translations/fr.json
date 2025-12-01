@@ -24,5 +24,19 @@
   "searchvideo": "rechercher des vidéos...",
   "suggestions": "Aucune suggestion",
   "search": "Rechercher",
-  "quiz":"Quiz"
+  "quiz":"Quiz",
+  "accessCode": "Entrez le code d’accès",
+  "codeValidation": "Veuillez entrer le code",
+  "submit": "Valider",
+  "questionsNotLoading": "Échec du chargement des questions",
+  "passed": "VALIDÉ 🎉",
+  "failed": "ÉCHEC",
+  "passedMessage": "Bravo ! Continue — la pratique rend parfait.",
+  "failedMessage": "Ne baisse pas les bras — continue à t’entraîner.",
+  "fullMarks": "Quiz bluffant !",
+  "question": "Question :",
+  "answer": "Votre réponse :",
+  "correctAnswer": "Réponse correcte :",
+  "explanation": "Explication :",
+  "finalHead":"Résultat du quiz / récapitulatif"
 }

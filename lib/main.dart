@@ -7,8 +7,8 @@ import 'package:limanplatform/components/socialicons.dart';
 import 'package:limanplatform/components/videopage.dart';
 import 'package:limanplatform/components/webview_page.dart';
 import 'package:limanplatform/constants.dart';
+import 'package:limanplatform/quiz/codecheckscreen.dart';
 import 'package:limanplatform/quiz/quizprovider.dart';
-import 'package:limanplatform/quiz/quizscreen.dart';
 import 'package:provider/provider.dart';
 
 void main() async {
@@ -180,7 +180,7 @@ class LimanPlatform extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => const QuizScreen(),
+                                builder: (context) => const CodeCheckScreen(),
                               ),
                             );
                           }

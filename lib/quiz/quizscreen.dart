@@ -2,14 +2,18 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:typed_data';
 import 'package:flutter/material.dart';
-import 'package:limanplatform/quiz/wronganswersscreen.dart';
 import 'package:provider/provider.dart';
+import 'package:limanplatform/quiz/codecheckscreen.dart';
+import 'package:limanplatform/quiz/wronganswersscreen.dart';
 import '../constants.dart';
 import '../dao/quizoption.dart';
 import '../quiz/quizprovider.dart';
 
 class QuizScreen extends StatefulWidget {
-  const QuizScreen({Key? key}) : super(key: key);
+  final String token;
+  final String langCode;
+  const QuizScreen({Key? key, required this.token, required this.langCode})
+    : super(key: key);
 
   @override
   State<QuizScreen> createState() => _QuizScreenState();
@@ -21,13 +25,12 @@ class _QuizScreenState extends State<QuizScreen> {
   double progress = 1.0;
   Timer? timer;
   Uint8List? questionImage;
-  int score = 0;
 
   @override
   void initState() {
     super.initState();
     final quizProvider = Provider.of<QuizProvider>(context, listen: false);
-    quizProvider.fetchQuestions().then((_) {
+    quizProvider.fetchQuestions(widget.token, widget.langCode).then((_) {
       loadQuestionImage(quizProvider.questions[currentQuestionIndex]);
       startTimer();
     });
@@ -39,7 +42,6 @@ class _QuizScreenState extends State<QuizScreen> {
     super.dispose();
   }
 
-  // Decode base64 image once per question
   void loadQuestionImage(QuizQuestion question) {
     if (question.imageBase64 != null &&
         question.imageBase64!.isNotEmpty &&
@@ -83,7 +85,7 @@ class _QuizScreenState extends State<QuizScreen> {
             progress = timeLeft / Constants.questiontimer;
           } else {
             t.cancel();
-            handleAnswer(null); // time up, treat as wrong
+            handleAnswer(null);
           }
         });
       }
@@ -92,17 +94,7 @@ class _QuizScreenState extends State<QuizScreen> {
 
   void handleAnswer(int? selectedIndex) {
     final quizProvider = Provider.of<QuizProvider>(context, listen: false);
-    final question = quizProvider.questions[currentQuestionIndex];
-
-    // Scoring logic with negative marking
-    if (selectedIndex != null) {
-      if (selectedIndex == question.correctOption) {
-        score += question.level.toLowerCase() == "easy" ? 5 : 1;
-      } else {
-        score -= 1; // negative marking for wrong
-      }
-    }
-
+    quizProvider.answerQuestion(selectedOption: selectedIndex);
     nextQuestion();
   }
 
@@ -113,12 +105,13 @@ class _QuizScreenState extends State<QuizScreen> {
       setState(() {
         currentQuestionIndex++;
       });
-      startTimer(); // restart timer for next question
+      quizProvider.nextQuestionProvider();
+      startTimer();
     } else {
       timer?.cancel();
       Navigator.of(
         context,
-      ).push(MaterialPageRoute(builder: (_) => WrongAnswersScreen()));
+      ).push(MaterialPageRoute(builder: (_) => const WrongAnswersScreen()));
     }
   }
 
@@ -131,9 +124,16 @@ class _QuizScreenState extends State<QuizScreen> {
         }
 
         final question = quizProvider.questions[currentQuestionIndex];
-
         return Scaffold(
           appBar: AppBar(
+            leading: IconButton(
+              icon: const Icon(Icons.arrow_back),
+              onPressed: () {
+                Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(builder: (_) => const CodeCheckScreen()),
+                );
+              },
+            ),
             title: Text(
               "Question ${currentQuestionIndex + 1}/${quizProvider.questions.length}",
             ),
@@ -144,35 +144,54 @@ class _QuizScreenState extends State<QuizScreen> {
             padding: const EdgeInsets.all(16.0),
             child: Column(
               children: [
-                // Circular Timer
+                // Live score display
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      "Score: ${quizProvider.totalScore.toStringAsFixed(0)}",
+                      style: const TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Text(
+                      "Correct: ${quizProvider.correctAnswersCount}",
+                      style: const TextStyle(fontSize: 16, color: Colors.green),
+                    ),
+                    Text(
+                      "Wrong: ${quizProvider.wrongAnswersCount}",
+                      style: const TextStyle(fontSize: 16, color: Colors.red),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 12),
+                // Timer circle
                 SizedBox(
-                  height: 50,
-                  width: 50,
+                  height: 60,
+                  width: 60,
                   child: Stack(
                     alignment: Alignment.center,
                     children: [
                       CircularProgressIndicator(
                         value: progress,
-                        strokeWidth: 35,
-                        backgroundColor: Constants.background,
+                        strokeWidth: 6,
+                        backgroundColor: Colors.red,
                         valueColor: const AlwaysStoppedAnimation<Color>(
-                          Colors.pink,
+                          Colors.green,
                         ),
                       ),
                       Text(
                         "$timeLeft s",
                         style: const TextStyle(
-                          color: Constants.primary,
                           fontWeight: FontWeight.bold,
-                          fontSize: 17,
+                          fontSize: 14,
                         ),
                       ),
                     ],
                   ),
                 ),
                 const SizedBox(height: 16),
-
-                // Question Image
                 if (questionImage != null)
                   Center(
                     child: Image.memory(
@@ -182,8 +201,6 @@ class _QuizScreenState extends State<QuizScreen> {
                     ),
                   ),
                 const SizedBox(height: 16),
-
-                // Points display for hard questions
                 Text(
                   getPointsText(question.level),
                   style: const TextStyle(
@@ -193,8 +210,6 @@ class _QuizScreenState extends State<QuizScreen> {
                   ),
                 ),
                 const SizedBox(height: 8),
-
-                // Question text
                 Text(
                   question.question,
                   textAlign: TextAlign.center,
@@ -205,7 +220,7 @@ class _QuizScreenState extends State<QuizScreen> {
                 ),
                 const SizedBox(height: 16),
 
-                // Options
+                // Options list using locale‑aware text
                 Column(
                   children: question.options
                       .where(
@@ -214,6 +229,9 @@ class _QuizScreenState extends State<QuizScreen> {
                       )
                       .map((opt) {
                         final index = question.options.indexOf(opt);
+                        final label =
+                            opt.text[widget.langCode] ??
+                            ""; // fallback to English if missing
                         return Padding(
                           padding: const EdgeInsets.symmetric(vertical: 6.0),
                           child: ElevatedButton(
@@ -224,7 +242,7 @@ class _QuizScreenState extends State<QuizScreen> {
                               foregroundColor: Constants.background,
                             ),
                             child: Text(
-                              opt.text['en'] ?? "",
+                              label,
                               style: const TextStyle(fontSize: 18),
                             ),
                           ),

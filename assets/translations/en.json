@@ -9,7 +9,7 @@
   "password": "Password",
   "loginPage": "Please enter your login information to proceed to the schedule.",
   "fogorPassword": "Password forgotten",
-  "loginButton": "Loggin",
+  "loginButton": "Login",
   "question1":"How old do you need to be for driver's license B?",
   "answer1":"You can take the practical exam as soon as you turn 18.",
   "question2":"Can you take driving lessons without theory?",
@@ -24,5 +24,20 @@
   "searchvideo": "search for videos....",
   "suggestions": "No suggestions",
   "search": "Search",
-  "quiz":"Quiz"
+  "quiz":"Quiz",
+  "accessCode": "Enter Access Code",
+  "codeValidation":"Please enter code",
+  "submit": "Submit",
+  "questionsNotLoading": "Failed to load questions",
+  "passed": "PASSED 🎉",
+  "failed": "FAILED",
+  "passedMessage":"Well done! Stay at it — practice makes perfect.",
+  "failedMessage": "Stay positive — keep practicing, and you’ll get there.",
+  "fullMarks":"Mind‑blowing trivia!",
+  "question":"Question :",
+  "answer":"Your answer :",
+  "correctAnswer":"Correct answer :",
+  "explanation": "Explanation :",
+  "finalHead":"Quiz Result / Review"
+
 }

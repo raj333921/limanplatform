@@ -24,6 +24,20 @@
   "searchvideo": "zoek naar video's...",
   "suggestions": "Geen suggesties",
   "search": "Zoeken",
-  "quiz":"Quiz"
+  "quiz":"Quiz",
+  "accessCode": "Voer toegangscode in",
+  "codeValidation": "Gelieve de code in te voeren",
+  "submit": "Verzenden",
+  "questionsNotLoading": "Vragen konden niet geladen worden",
+  "passed": "GESLAAGD 🎉",
+  "failed": "MISLUKT",
+  "passedMessage": "Goed gedaan! Blijf oefenen — oefening baart kunst.",
+  "failedMessage": "Kop op — blijf oefenen, je geraakt er wel.",
+  "fullMarks": "Geweldige quiz!",
+  "question": "Vraag :",
+  "answer": "Uw antwoord :",
+  "correctAnswer": "Correct antwoord :",
+  "explanation": "Uitleg :",
+  "finalHead":"Quizresultaat / Overzicht"
   }
 
