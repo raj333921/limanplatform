@@ -38,5 +38,7 @@
   "answer": "Votre réponse :",
   "correctAnswer": "Réponse correcte :",
   "explanation": "Explication :",
-  "finalHead":"Résultat du quiz / récapitulatif"
+  "finalHead":"Résultat du quiz / récapitulatif",
+  "errorCodeMessage": "Code invalide, expiré ou déjà utilisé",
+  "genericMessage": "Contactez Liman sur WhatsApp"
 }

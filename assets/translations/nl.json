@@ -38,6 +38,8 @@
   "answer": "Uw antwoord :",
   "correctAnswer": "Correct antwoord :",
   "explanation": "Uitleg :",
-  "finalHead":"Quizresultaat / Overzicht"
+  "finalHead":"Quizresultaat / Overzicht",
+  "errorCodeMessage": "Ongeldige, verlopen of gebruikte code",
+  "genericMessage": "Neem contact op met Liman via WhatsApp"
   }
 

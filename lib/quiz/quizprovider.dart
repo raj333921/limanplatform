@@ -26,7 +26,7 @@ class QuizProvider with ChangeNotifier {
 
   Future<void> fetchQuestions(String token, String lang) async {
     final uri = Uri.http(
-      'localhost:3000', // authority (host + optional port)
+      '192.168.129.4:3000', // authority (host + optional port)
       '/quiz/liman', // path (API endpoint)
       {'lang': lang}, // query parameters
     );

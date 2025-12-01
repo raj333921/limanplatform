@@ -26,11 +26,11 @@ class _CodeCheckScreenState extends State<CodeCheckScreen> {
       _errorMessage = null;
     });
 
-    final code = _codeController.text.trim();
+    final code = _codeController.text.toUpperCase().trim();
 
     try {
       final resp = await http.post(
-        Uri.parse('http://localhost:3000/auth/activate'),
+        Uri.parse('http://192.168.129.4:3000/auth/activate'),
         headers: {'Content-Type': 'application/json'},
         body: jsonEncode({'code': code}),
       );
@@ -56,7 +56,12 @@ class _CodeCheckScreenState extends State<CodeCheckScreen> {
         }
       } else {
         setState(() {
-          _errorMessage = 'Server error: ${resp.statusCode}';
+          final isValid = resp.body.contains('"message":');
+          String message = 'errorCodeMessage'.tr();
+          if (isValid) {
+            message = 'errorCodeMessage'.tr();
+          }
+          _errorMessage = 'Server error: $message';
         });
       }
     } catch (e) {
@@ -95,8 +100,19 @@ class _CodeCheckScreenState extends State<CodeCheckScreen> {
           child: Column(
             children: [
               TextFormField(
+                style: const TextStyle(
+                  color: Constants.primary, // <-- Change text color here
+                ),
                 controller: _codeController,
-                decoration: const InputDecoration(labelText: 'Code'),
+                decoration: const InputDecoration(
+                  labelText: 'Code',
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.blueAccent),
+                  ),
+                  focusedBorder: const OutlineInputBorder(
+                    borderSide: BorderSide(color: Constants.primary, width: 2),
+                  ),
+                ),
                 validator: (val) {
                   if (val == null || val.trim().isEmpty) {
                     return "codeValidation".tr();
@@ -112,6 +128,10 @@ class _CodeCheckScreenState extends State<CodeCheckScreen> {
                 ),
               const SizedBox(height: 20),
               ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Constants.primary, // Button color
+                  foregroundColor: Constants.secondary, // Text/icon color
+                ),
                 onPressed: _loading
                     ? null
                     : () {

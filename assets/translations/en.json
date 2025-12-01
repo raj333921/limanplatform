@@ -38,6 +38,8 @@
   "answer":"Your answer :",
   "correctAnswer":"Correct answer :",
   "explanation": "Explanation :",
-  "finalHead":"Quiz Result / Review"
+  "finalHead":"Quiz Result / Review",
+  "errorCodeMessage":"Invalid, expired or used code",
+  "genericMessage": "Reach out Liman on WhatsApp"
 
 }
